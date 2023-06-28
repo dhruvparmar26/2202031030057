@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>If-Else Example</title>
+</head>
+<body>
+  <h1>If-Else Example</h1>
+
+  <button id="button" onclick="checkAge()">Check Age</button>
+
+  <div id="resultContainer"></div>
+
+  <script>
+    function checkAge() {
+  const resultContainer = document.getElementById("resultContainer");
+
+  const age = 18;
+
+  if (age >= 18) {
+    resultContainer.innerHTML = "<p>You are eligible to enter.</p>";
+  } else {
+    resultContainer.innerHTML = "<p>You are not eligible to enter.</p>";
+  }
+}
+  </script>
+</body>
+</html>

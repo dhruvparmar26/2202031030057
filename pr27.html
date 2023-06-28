@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Switch Case Example</title>
+</head>
+<body>
+  <h1>Switch Case Example</h1>
+
+  <label for="day">Enter a day:</label>
+  <input type="text" id="day">
+  <button id="checkBtn" onclick="checkDay()">Check</button>
+
+  <div id="resultContainer"></div>
+
+  <script>
+    function checkDay() {
+  const dayInput = document.getElementById("day");
+  const resultContainer = document.getElementById("resultContainer");
+
+  const day = dayInput.value.toLowerCase();
+  let message;
+
+  switch (day) {
+    case "monday":
+      message = "It's 1st day of the week.";
+      break;
+    case "tuesday":
+      message = "It's 2st day of the week.";
+      break;
+    case "wednesday":
+      message = "It's 3st day of the week.";
+      break;
+    case "thursday":
+      message = "It's 4st day of the week.";
+      break;
+    case "friday":
+      message = "It's 5st day of the week.";
+      break;
+    case "saturday":
+      message = "It's 6st day of the week.";
+      break;
+    case "sunday":
+      message = "It's 7st day of the week.";
+      break;
+    default:
+      message = "Invalid day entered.";
+  }
+
+  resultContainer.innerHTML = `<p>${message}</p>`;
+}
+
+  </script>
+</body>
+</html>
