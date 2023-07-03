@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+  Name: <input type="text" name="fname">
+  En no:<input type="text" name="En no">
+  <input type="submit">
+</form>
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // collect value of input field
+    $name = htmlspecialchars($_REQUEST['fname']);
+    if (empty($name)) {
+        echo "Name is empty";
+    } else {
+        echo $name;
+    }
+    $en no = htmlspecialchars($_REQUEST['en no']);
+    if (empty($en no)) {
+        echo "Name is empty";
+    } else {
+        echo $en no;
+    }
+}
+?>
+
+</body>
+</html>
