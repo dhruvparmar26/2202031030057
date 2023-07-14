@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"> </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"> </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <title>Feedback Form</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <style>
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    button {
+      margin-top: 10px;
+    }
+
+    body {
+      background-color: rgb(241, 255, 84);
+      margin: 0px;
+    }
+
+    .fa-star {
+      font-size: 50px;
+      align-content: center;
+    }
+
+    .container {
+      height: 100px;
+      width: 600px;
+      margin: auto;
+    }
+  </style>
+</head>
+
+<body style="text-align: center; border-radius: 40px; ">
+  <div class="container">
+
+    <div class="container" >
+      <h1>Feedback Form</h1>
+      <form id="feedbackForm" style=" border: 2px solid rgb(83, 146, 255);
+      border-radius: 5px;  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);  background-color: rgb(83, 146, 255)">
+        <h3>
+          <label style="color: rgb(0, 0, 0); width: 100%; " for="name">Name</label>
+          <input style=" box-shadow: 0 4px 8px 0 rgba(255, 223, 167, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" placeholder="Full Name" type="text" tabindex="1" id="name" required autofocus>
+        </h3>
+
+        <h3><label style="color: rgb(0, 0, 0);" for="email">Email</label>
+          <input style=" box-shadow: 0 4px 8px 0 rgba(255, 223, 167, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" placeholder="Email Address" type="email" id="email" tabindex="2" required>
+        </h3>
+
+        <h3><label style="color: rgb(0, 0, 0);" for="phone">contact</label>
+          <input style=" box-shadow: 0 4px 8px 0 rgba(255, 223, 167, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" placeholder="Contact Number" type="phone" id="phone" tabindex="2" required>
+        </h3>
+
+        <h3><label style="color: rgb(0, 0, 0);" for="message">Message</label>
+          <textarea style=" box-shadow: 0 4px 8px 0 rgba(255, 223, 167, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" id="message" rows="4" required></textarea>
+        </h3>
+
+        <div class="con">
+          <h3 style="margin-top :0px; color: rgb(0, 0, 0);">Rate our product :-</h3>
+          <i class="fa fa-star" aria-hidden="true" id="st1"></i>
+          <i class="fa fa-star" aria-hidden="true" id="st2"></i>
+          <i class="fa fa-star" aria-hidden="true" id="st3"></i>
+          <i class="fa fa-star" aria-hidden="true" id="st4"></i>
+          <i class="fa fa-star" aria-hidden="true" id="st5"></i>
+        </div>
+        <button type="submit" style=" box-shadow: 0 4px 8px 0 rgba(255, 223, 167, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">Submit</button><br><br>
+        <a href="/pr.html" class="btn btn-primary">Go To Product</a>
+        <div style="color: rgb(0, 0, 0);">
+          <h3 id="output"></h3>
+        </div>
+        <div style="color: rgb(0, 0, 0);">
+          <h3 id="output1"></h3>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      $('#feedbackForm').submit(function (event) {
+        event.preventDefault();
+
+        var name = $('#name').val();
+        var email = $('#email').val();
+        var phone = $('#phone').val();
+        var message = $('#message').val();
+
+        // You can perform additional validation here before sending the form data
+
+        var formData = {
+          name: name,
+          email: email,
+          phone: phone,
+          message: message
+        };
+
+        $.ajax({
+          type: 'GET',
+          url: '', // Replace with the URL to your server-side script
+          data: formData,
+          success: function (response) {
+            // Display success message
+            $('#output1').html('<p>Thank you for your feedback!</p>');
+
+            // Clear form fields
+            $('#name').val('');
+            $('#email').val('');
+            $('#phone').val('');
+            $('#message').val('');
+          },
+          error: function () {
+            // Display error message
+            $('#output1').html('<p>Thank you for your feedback!</p>');
+          }
+        });
+      });
+    });
+    $(document).ready(function () {
+      $("#st1").click(function () {
+        $(".fa-star").css("color", "black");
+        $("#st1").css("color", "yellow");
+        $('div.simple_alert').remove();
+        alert("You giv 1 star rating")
+        $('#output').html('<p>Thank you for giving 1 start rating</p>');
+
+      });
+      $("#st2").click(function () {
+        $(".fa-star").css("color", "black");
+        $("#st1, #st2").css("color", "yellow");
+        alert("You giv 2 star rating");
+        $('#output').html('<p>Thank you for giving 2 start rating</p>');
+
+      });
+      $("#st3").click(function () {
+        $(".fa-star").css("color", "black")
+        $("#st1, #st2, #st3").css("color", "yellow");
+        alert("You giv 3 star rating");
+        $('#output').html('<p>Thank you for giving 3 start rating</p>');
+
+      });
+      $("#st4").click(function () {
+        $(".fa-star").css("color", "black");
+        $("#st1, #st2, #st3, #st4").css("color", "yellow");
+        alert("You giv 4 star rating");
+        $('#output').html('<p>Thank you for giving 4 start rating</p>');
+
+      });
+      $("#st5").click(function () {
+        $(".fa-star").css("color", "black");
+        $("#st1, #st2, #st3, #st4, #st5").css("color", "yellow");
+        alert("You giv 5 star rating");
+        $('#output').html('<p>Thank you for giving 5 start rating</p>');
+
+      });
+    });
+  </script>
+</body>
+
+</html>
